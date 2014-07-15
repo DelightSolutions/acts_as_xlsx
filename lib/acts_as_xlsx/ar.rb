@@ -69,11 +69,8 @@ module Axlsx
         return p if data.empty?
         p.workbook.add_worksheet(:name=>sheet_name) do |sheet|
           
-          col_labels = if i18n
-                         columns.map { |c| I18n.t("#{i18n}.#{self.name.underscore}.#{c}") }                         
-                       else
-                         columns.map { |c| c.to_s.humanize }
-                       end
+          col_labels = columns.map { |c| c.to_s }
+                      
           
           sheet.add_row col_labels, :style=>header_style
           
